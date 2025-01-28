@@ -36,15 +36,12 @@ def realizar_solicitud(endpoint, peticion, resultados):
         resultados['tiempos_respuesta'].append((fin - inicio) * 1000)
 
 def pruebas_carga_estres_capacidad():
-    # Configuración inicial
-    num_peticiones = 30  # Número de usuarios concurrentes
+    num_peticiones = 30 
     resumen = []
 
-    # Iterar sobre cada endpoint y realizar las pruebas
     for endpoint in endpoints:
         print(f"Realizando prueba de {endpoint['tipo']} para el endpoint: {endpoint['url']}")
 
-        # Resultados por endpoint
         resultados = {
             'endpoint': endpoint['url'],
             'prueba': endpoint['tipo'],
@@ -54,18 +51,15 @@ def pruebas_carga_estres_capacidad():
             'tiempos_respuesta': []
         }
 
-        # Crear hilos para realizar solicitudes concurrentes
         with concurrent.futures.ThreadPoolExecutor(max_workers=num_peticiones) as ejecutor:
             tareas_pendientes = [
                 ejecutor.submit(realizar_solicitud, endpoint, i, resultados)
                 for i in range(num_peticiones)
             ]
 
-            # Esperar a que todas las tareas terminen
             for tarea in tareas_pendientes:
                 tarea.result()
 
-        # Calcular métricas
         if resultados['tiempos_respuesta']:
             tiempo_promedio = sum(resultados['tiempos_respuesta']) / len(resultados['tiempos_respuesta'])
             tiempo_maximo = max(resultados['tiempos_respuesta'])
@@ -74,7 +68,6 @@ def pruebas_carga_estres_capacidad():
 
         tasa_exito = (resultados['exitos'] / num_peticiones) * 100
 
-        # Guardar resultados finales
         resumen.append({
             'Endpoint': resultados['endpoint'],
             'Prueba': resultados['prueba'],
@@ -84,10 +77,8 @@ def pruebas_carga_estres_capacidad():
             'Tasa de Éxito (%)': round(tasa_exito, 2)
         })
 
-    # Mostrar el resumen de las pruebas
     print("\nResultados de las pruebas:")
     for resultado in resumen:
         print(resultado)
 
-# Ejecutar las pruebas
 pruebas_carga_estres_capacidad()
