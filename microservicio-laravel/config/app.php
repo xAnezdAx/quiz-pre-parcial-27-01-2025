@@ -5,6 +5,8 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+    'API_KEY' => env('API_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

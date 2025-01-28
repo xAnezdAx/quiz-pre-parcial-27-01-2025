@@ -5,12 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BandasController;
 use App\Http\Controllers\GenerosController;
 
-Route::get('/bands', [BandasController::class, 'index']);
-Route::get('/bands/{id}', [BandasController::class, 'show']);
 
-Route::get('/genres', [GenerosController::class, 'index']);
-Route::get('/genres/{id}', [GenerosController::class, 'show']);
 
+Route::middleware(['filter'])->group(function () {
+    Route::get('/bands', [BandasController::class, 'index']);
+    Route::get('/bands/{id}', [BandasController::class, 'show']);
+
+    Route::get('/genres', [GenerosController::class, 'index']);
+    Route::get('/genres/{id}', [GenerosController::class, 'show']);
+});
 /*
 |--------------------------------------------------------------------------
 | API Routes
