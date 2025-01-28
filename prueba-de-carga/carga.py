@@ -6,9 +6,9 @@ base_url = 'http://127.0.0.1:8000/api/'
 
 endpoints = [
     {'url': f"{base_url}bandas", 'tipo': 'Carga'},
-    {'url': f"{base_url}bandas/1", 'tipo': 'Estrés'},  # ID ejemplo
+    {'url': f"{base_url}bandas/1", 'tipo': 'Estrés'},
     {'url': f"{base_url}generos", 'tipo': 'Capacidad'},
-    {'url': f"{base_url}generos/1", 'tipo': 'Carga'},  # ID ejemplo
+    {'url': f"{base_url}generos/1", 'tipo': 'Carga'},
 ]
 
 resultados = []
