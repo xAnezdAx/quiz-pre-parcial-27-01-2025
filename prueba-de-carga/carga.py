@@ -2,13 +2,24 @@ import requests
 import concurrent.futures
 import time
 
-base_url = 'http://127.0.0.1:8000/api/'
+base_laravel_url = 'http://127.0.0.1:8000/api/'
 
 endpoints = [
-    {'url': f"{base_url}bandas", 'tipo': 'Carga'},
-    {'url': f"{base_url}bandas/1", 'tipo': 'Estrés'},
-    {'url': f"{base_url}generos", 'tipo': 'Capacidad'},
-    {'url': f"{base_url}generos/1", 'tipo': 'Carga'},
+    {'url': f"{base_laravel_url}bandas", 'tipo': 'Carga'},
+    {'url': f"{base_laravel_url}bandas/1", 'tipo': 'Estrés'},
+    {'url': f"{base_laravel_url}bandas/1", 'tipo': 'Capacidad'},
+    {'url': f"{base_laravel_url}generos", 'tipo': 'Capacidad'},
+    {'url': f"{base_laravel_url}generos/1", 'tipo': 'Carga'},
+    {'url': f"{base_laravel_url}generos/1", 'tipo': 'Estrés'},
+    {'url': f"{base_laravel_url}record_labels", 'tipo': 'Estrés'},
+    {'url': f"{base_laravel_url}record_labels", 'tipo': 'Carga'},
+    {'url': f"{base_laravel_url}record_labels", 'tipo': 'Capacidad'},
+    {'url': f"{base_laravel_url}generate_labels/10", 'tipo': 'Estrés'},
+    {'url': f"{base_laravel_url}generate_labels/6", 'tipo': 'Carga'},
+    {'url': f"{base_laravel_url}generate_labels/8", 'tipo': 'Capacidad'},
+    
+    
+    
 ]
 
 resultados = []
