@@ -10,7 +10,7 @@ labels = []
 
 @app.route("/record_labels", methods=["GET"])
 def read_item():
-    df = pd.read_csv("microservicio_flask/labels.csv")
+    df = pd.read_csv("labels.csv")
     if df is not None:
         return jsonify(df.to_dict(orient="records"))
 
@@ -18,11 +18,12 @@ def read_item():
 @app.route("/generate_labels/<int:n>", methods=["POST"])
 def postLabels(n):
     
+    
     for i in range(0,n):
         labels.append({"label_id": i, "label": "label"+str(i)})
     
     df = pd.DataFrame(labels)
-    df.to_csv("microservicio_flask/labels.csv", index=False)
+    df.to_csv("labels.csv", index=False)
     return jsonify(labels)
 
 
